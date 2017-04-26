@@ -1,0 +1,63 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using WebMVC.ViewModels
+@using WebMVC.Services
+
+@inject IIdentityParser<ApplicationUser> UserManager
+
+@*@if (Context.User.Identity.IsAuthenticated)*@
+@if (User.FindFirst(x => x.Type == "preferred_username") != null)
+{
+    <section class="col-lg-4 col-md-5 col-xs-12">
+        <div class="bs-identity">
+            <form asp-area="" asp-controller="Account" asp-action="SignOut" method="post" id="logoutForm" class="navbar-right">
+                <section class="bs-identity-section">
+
+                    <div class="bs-identity-name">@User.FindFirst(x => x.Type == "preferred_username").Value</div>
+                    <img class="bs-identity-image" src="~/images/arrow-down.png">
+                </section>
+
+                <section class="bs-identity-drop">
+
+                    <a class="bs-identity-item"
+                       asp-controller="Order"
+                       asp-action="Index">
+
+                        <div class="bs-identity-name bs-identity-name--upper">My orders</div>
+                        <img class="bs-identity-image" src="~/images/my_orders.png">
+                    </a>
+
+                    <a class="bs-identity-item"
+                       href="javascript:document.getElementById('logoutForm').submit()">
+
+                        <div class="bs-identity-name bs-identity-name--upper">Log Out</div>
+                        <img class="bs-identity-image" src="~/images/logout.png">
+                    </a>
+                </section>
+            </form>
+        </div>
+    </section>
+
+    <section class="col-lg-1 col-xs-12">
+        @await Component.InvokeAsync("Cart", new { user = UserManager.Parse(User) })
+    </section>
+
+}
+else
+{
+    <section class="col-lg-4 col-md-5 col-xs-12">
+        <div class="bs-identity">
+            <section class="bs-identity-section">
+                <div class="bs-identity-item">
+
+                    <a asp-area="" asp-controller="Account" asp-action="SignIn" class="bs-identity-name bs-identity-name--upper">
+                        Login
+                    </a>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <section class="col-lg-1 col-xs-12">
+
+    </section>
+}

@@ -1,0 +1,34 @@
+.bs-pager-wrapper {
+    padding-top: 1rem;
+    text-align: center;
+}
+
+.bs-pager-item {
+    margin: 0 5vw;
+}
+
+.bs-pager-item--navigable {
+    display: inline-block;
+    cursor: pointer;
+}
+
+    .bs-pager-item--navigable.is-disabled {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .bs-pager-item--navigable:hover {
+        color: #83D01B;
+    }
+
+@media screen and (max-width: 1280px) {
+    .bs-pager-item {
+        font-size: 0.85rem;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .bs-pager-item {
+        margin: 0 4vw;
+    }
+}

@@ -1,0 +1,46 @@
+version: '2.1'
+
+services:
+  catalog.api:
+    image: beershop/catalog.api
+    build:
+      context: ./src/Services/Catalog/Catalog.API
+      dockerfile: Dockerfile.nanowin
+    depends_on:
+      - sql.data
+
+  identity.api:
+    image: beershop/identity.api
+    build:
+      context: ./src/Services/Identity/Identity.API
+      dockerfile: Dockerfile.nanowin
+    depends_on:
+      - sql.data
+
+  webmvc:
+    image: beershop/webmvc
+    build:
+      context: ./src/Web/WebMVC
+      dockerfile: Dockerfile.nanowin
+    depends_on:
+      - catalog.api
+      - ordering.api
+      - identity.api
+      - basket.api
+
+  sql.data:
+    image: microsoft/mssql-server-windows
+
+  rabbitmq:
+    image: rabbitmq
+    build:
+      context: ./_docker/rabbitmq
+      dockerfile: Dockerfile.nanowin  
+    ports:
+        - "5672:5672"
+  
+networks:
+  default:
+    external:
+      name: nat
+

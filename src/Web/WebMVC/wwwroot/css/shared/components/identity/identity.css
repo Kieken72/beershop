@@ -1,0 +1,57 @@
+.bs-identity {
+    line-height: 3rem;
+    position: relative;
+    text-align: right;
+}
+
+.bs-identity-section {
+    display: inline-block;
+    width: 100%;
+}
+
+.bs-identity-name {
+    display: inline-block;
+}
+
+.bs-identity-name--upper {
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 768px) {
+    .bs-identity-name {
+        font-size: 0.85rem;
+    }
+}
+
+.bs-identity-image {
+    display: inline-block;
+}
+
+.bs-identity-drop {
+    background: #FFFFFF;
+    height: 0;
+    min-width: 14rem;
+    right: 0;
+    overflow: hidden;
+    padding: .5rem;
+    position: absolute;
+    top: 2.5rem;
+    transition: height 0.35s;
+}
+
+.bs-identity:hover .bs-identity-drop {
+    border: 1px solid #EEEEEE;
+    height: 7rem;
+    transition: height 0.35s;
+}
+
+.bs-identity-item {
+    cursor: pointer;
+    display: block;
+    transition: color 0.35s;
+}
+
+    .bs-identity-item:hover {
+        color: #75b918;
+        transition: color 0.35s;
+    }

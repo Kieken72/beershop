@@ -1,0 +1,17 @@
+.bs-header {
+    background-color: #00A69C;
+    height: 2rem;
+}
+
+.bs-header-back {
+    color: rgba(255, 255, 255, 0.5) !important;
+    line-height: 4rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.35s;
+}
+
+    .bs-header-back:hover {
+        color: #FFFFFF !important;
+        transition: color 0.35s;
+    }
